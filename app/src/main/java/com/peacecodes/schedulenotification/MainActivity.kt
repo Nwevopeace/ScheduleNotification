@@ -23,6 +23,8 @@ class MainActivity : AppCompatActivity() {
         createNotificationChannel()
         binding.notifyBtn.setOnClickListener {
             showNotification()
+             val intent = Intent(this, AnimationActivity::class.java)
+            startActivity(intent)
         }
     }
 
