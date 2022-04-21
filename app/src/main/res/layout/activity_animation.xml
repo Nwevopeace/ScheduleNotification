@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".MainActivity">
 
     <FrameLayout
@@ -26,49 +27,57 @@
             app:tint="@color/teal_700" />
     </FrameLayout>
 
-
-    <Button
-        android:id="@+id/rotateButton"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/rotate"
-        app:layout_constraintEnd_toStartOf="@+id/translateButton"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/translateButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:text="@string/translate"
-        app:layout_constraintStart_toEndOf="@+id/rotateButton"
-        app:layout_constraintTop_toTopOf="@+id/rotateButton" />
-
-    <Button
-        android:id="@+id/scaleButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:text="@string/scale"
-        app:layout_constraintEnd_toStartOf="@+id/fadeButton"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toEndOf="@+id/translateButton"
-        app:layout_constraintTop_toTopOf="@+id/translateButton" />
-
-    <Button
-        android:id="@+id/fadeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:layout_marginEnd="10dp"
-        android:text="@string/fade"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/scaleButton"
-        app:layout_constraintTop_toTopOf="@+id/scaleButton" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/rotateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/rotate"
+            app:layout_constraintEnd_toStartOf="@+id/translateButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/translateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@string/translate"
+            app:layout_constraintEnd_toStartOf="@id/scaleButton"
+            app:layout_constraintStart_toEndOf="@+id/rotateButton"
+            app:layout_constraintTop_toTopOf="@+id/rotateButton" />
+
+        <Button
+            android:id="@+id/scaleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@string/scale"
+            app:layout_constraintEnd_toStartOf="@+id/fadeButton"
+            app:layout_constraintStart_toEndOf="@+id/translateButton"
+            app:layout_constraintTop_toTopOf="@+id/translateButton" />
+
+        <Button
+            android:id="@+id/fadeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="24dp"
+            android:text="@string/fade"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/scaleButton"
+            app:layout_constraintTop_toTopOf="@+id/scaleButton" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linearLayout"
@@ -78,7 +87,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="20dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@id/rotateButton">
+        app:layout_constraintTop_toBottomOf="@id/layout">
 
         <Button
             android:id="@+id/colorizeButton"

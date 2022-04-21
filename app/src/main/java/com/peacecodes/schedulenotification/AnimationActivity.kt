@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.LinearInterpolator
+import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.appcompat.widget.AppCompatImageView
@@ -17,43 +18,57 @@ import com.peacecodes.schedulenotification.databinding.ActivityAnimationBinding
 class AnimationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAnimationBinding
     private lateinit var star: ImageView
+    lateinit var rotateButton: Button
+    lateinit var translateButton: Button
+    lateinit var scaleButton: Button
+    lateinit var fadeButton: Button
+    lateinit var colorizeButton: Button
+    lateinit var showerButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAnimationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.star
+        star = findViewById(R.id.star)
+        rotateButton = findViewById<Button>(R.id.rotateButton)
+        translateButton = findViewById<Button>(R.id.translateButton)
+        scaleButton = findViewById<Button>(R.id.scaleButton)
+        fadeButton = findViewById<Button>(R.id.fadeButton)
+        colorizeButton = findViewById<Button>(R.id.colorizeButton)
+        showerButton = findViewById<Button>(R.id.showerButton)
 
-        binding.rotateButton.setOnClickListener {
+
+        rotateButton.setOnClickListener {
             rotater()
         }
 
-        binding.translateButton.setOnClickListener {
+        translateButton.setOnClickListener {
             translater()
         }
 
-        binding.scaleButton.setOnClickListener {
+        scaleButton.setOnClickListener {
             scaler()
         }
 
-        binding.fadeButton.setOnClickListener {
+        fadeButton.setOnClickListener {
             fader()
         }
 
-        binding.colorizeButton.setOnClickListener {
+        colorizeButton.setOnClickListener {
             colorizer()
         }
 
-        binding.showerButton.setOnClickListener {
+        showerButton.setOnClickListener {
             shower()
         }
     }
 
+
     private fun rotater() {
         val animator = ObjectAnimator.ofFloat(star, View.ROTATION, -360f, 0f)
         animator.duration = 1000
-        animator.disableView(binding.rotateButton)
+        animator.disableView(rotateButton)
         animator.start()
     }
 
@@ -61,7 +76,7 @@ class AnimationActivity : AppCompatActivity() {
         val animator = ObjectAnimator.ofFloat(star, View.TRANSLATION_X, 200f)
         animator.repeatCount = 1
         animator.repeatMode = ObjectAnimator.REVERSE
-        animator.disableView(binding.translateButton)
+        animator.disableView(translateButton)
         animator.start()
     }
 
@@ -79,7 +94,7 @@ class AnimationActivity : AppCompatActivity() {
         val animator = ObjectAnimator.ofFloat(star, View.ALPHA, 0f)
         animator.repeatCount = 1
         animator.repeatMode = ObjectAnimator.REVERSE
-        animator.disableView(binding.fadeButton)
+        animator.disableView(fadeButton)
         animator.start()
     }
 
@@ -89,7 +104,7 @@ class AnimationActivity : AppCompatActivity() {
         animator.duration = 500
         animator.repeatCount = 1
         animator.repeatMode = ObjectAnimator.REVERSE
-        animator.disableView(binding.colorizeButton)
+        animator.disableView(colorizeButton)
         animator.start()
     }
 
@@ -110,8 +125,8 @@ class AnimationActivity : AppCompatActivity() {
 
         newStar.scaleX = Math.random().toFloat() * 1.5f + .1f
         newStar.scaleY = newStar.scaleX
-        starWidth = newStar.scaleX
-        starHeight = newStar.scaleY
+        starWidth *= newStar.scaleX
+        starHeight *= newStar.scaleY
 
         newStar.translationX = Math.random().toFloat() * containerWidth - starWidth/2
 
